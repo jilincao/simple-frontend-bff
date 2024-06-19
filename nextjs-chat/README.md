@@ -1,3 +1,7 @@
+# Install
+run `npm install`
+
+# Start Server
 npx next dev -H 0.0.0.0 -p 9070
 
 conda activate /mnt/sgnfsdata/tolo-03-97/jilincao/env/py12
@@ -17,3 +21,4 @@ Next, kill the process using the port (check what it is first).
 kill <PID>
 kill -9 <PID> # if kill does not work
 If you're using Windows or macOS, there's an equivalent way to list listening ports and kill the process using the desired port.
+
