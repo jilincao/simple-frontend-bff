@@ -1,5 +1,7 @@
 # Install
-run `npm install`
+run `pnpm install`
+
+# env file
 
 # Start Server
 npx next dev -H 0.0.0.0 -p 9070
