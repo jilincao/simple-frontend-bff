@@ -6,6 +6,7 @@ npx next dev -H 0.0.0.0 -p 9070
 
 conda activate /mnt/sgnfsdata/tolo-03-97/jilincao/env/py12
 
+# When a port is used, or you need to stop the server
 It seems that port 3000 is already in use by another process.
 
 If you use Linux as OS:
