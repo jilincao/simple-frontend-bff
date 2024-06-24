@@ -1,13 +1,13 @@
 BFF layer for chatbot service
-Library: FastAPI, Pytest
+Library: FastAPI
 
 git clone http://192.168.2.95/jilincao/aift-chatbot-bff-service.git
 
-Production
-fastapi run
-uvicorn main:app --host 0.0.0.0 --port 9050 --reload
-Dev
-fastapi dev main.py
+Production  
+`fastapi run` or  
+`uvicorn main:app --host 0.0.0.0 --port 9050 --reload`
+Dev  
+`fastapi dev main.py`
 
 API Docs
 http://localhost:9050/docs
