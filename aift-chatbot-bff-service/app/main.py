@@ -1,6 +1,5 @@
 
 from __future__ import annotations
-
 import uvicorn
 from utils import stream_generator, stream_generator_general_chatting
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,21 +15,13 @@ from pydantic import ValidationError, BaseModel
 from sse_starlette.sse import EventSourceResponse
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    print("server starts")
-    yield
-    print("server shutdown")
-
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 
 origins = [
-    "http://localhost:54316",
-    "http://localhost:3050",
-    "http://localhost",
-    "http://localhost:3000",
     "http://192.168.2.97",
-    "http://192.168.2.97:3050"
+    "http://192.168.2.95",
+    "http://localhost:3001",
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
@@ -55,14 +46,6 @@ async def test_ss_generator():
 @app.get("/test/ss")
 async def test_ss():
     return StreamingResponse(test_ss_generator(), media_type="text/event-stream")
-
-
-def shutdown():
-    os.kill(os.getpid(), signal.SIGTERM)
-    return Response(status_code=200, content='Server shutting down...')
-
-
-app.add_api_route('/shutdown', shutdown, methods=['GET'])
 
 
 class Message(BaseModel):
@@ -116,6 +99,7 @@ def vercel_chat_completions(request_body: Annotated[Dict[Any, Any],  Body(
 
 
 @app.post('/chat/completions')
+@app.post('/v1/chat/completions')
 def chat_completions(request_body: Annotated[ChatCompletion, Body(
     openapi_examples={
         "default": {
