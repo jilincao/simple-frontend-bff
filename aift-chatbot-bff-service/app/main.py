@@ -17,6 +17,8 @@ from sse_starlette.sse import EventSourceResponse
 
 app = FastAPI()
 
+#  WARNING:  Invalid HTTP request received. is due to https, you should use http
+#  400 BAD REQUEST is due to CORS, examples as follows
 origins = [
     "http://192.168.2.97",
     "http://192.168.2.95",
